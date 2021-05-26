@@ -1,1 +1,3 @@
-# vision_transformer_for_eeg_data
+# Vision Transformer for EEG data
+
+The dataset is proposed to contain ~250000 EEG tensors of size 1024 x 40 (time points x number of EEG channels) which are divided into 9 classes. eye_noise.py contains the script which makes the data smooth using sav_gol filtering method, applies Fast Fourier Transformation and detects eye blink artefacts using ICA technique. That is done by finding 2 components using the data from frontal electrodes and choosing the one corresponding to the eye blinks. I do not remove this component by making its values equal to zero, but rather add it to the processed tensor as a feature. vision_transformer.py contains the new Vision Transformer architecture, which is adapted for the given problem (no embedding, changed dimensions and number of heads). train_eval.py contains script for gathering the dataset and training the given module.   
