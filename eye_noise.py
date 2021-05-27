@@ -48,7 +48,6 @@ def filter_eye_noise(words_tensor):
 
         first_fft[0] = first_fft[-1] = 0
         comps_right[i] = first_fft
-        comps_right[i] = first_component
     new_comp_right = rearrange(np.mean(comps_right, axis=0), 'n -> 1 n')
 
     words_tensor = abs(fft(rearrange(words_tensor, 't c -> c t'), axis=1))
